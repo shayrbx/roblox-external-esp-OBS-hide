@@ -51,8 +51,10 @@ while true do
     end
 
     if #Targets > 0 then
-        task.spawn(writefile, path, HttpService:JSONEncode(Targets))
+        writefile(path, HttpService:JSONEncode(Targets))
+    else
+        writefile(path, "[]")
     end
-    
-    RunService.Heartbeat:Wait()
+
+    task.wait()
 end
